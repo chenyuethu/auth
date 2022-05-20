@@ -3,8 +3,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        # Step 1: Check if tehre is a user with the email that was provided
-
+        # Step 1: Check if there is a user with the email that was provided
         @user = User.find_by({"email" => params["email"] })
         if @user 
         # Step 1a: If yes, check passpowrd.
@@ -14,10 +13,12 @@ class SessionsController < ApplicationController
                 redirect_to "/companies" 
             else
                 redirect_to "/sessions/new" 
+            end
         # Step 2b: If no, go back to login page
         else 
         # Step 1b: If no, go back to login page
+        redirect_to "/sessions/new" 
 
-
+        end
     end
 end
