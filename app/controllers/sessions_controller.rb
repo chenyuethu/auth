@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
         # Step 2: Check the password to see if it matches
             if BCrypt::Password.new(@user["password"]) == params["password"]
         # Step 2a: If yes, go to comapny page.
-        flash["notice"] = "You are in!"
+                cookies["user_id"] = @user["id"]
+                flash["notice"] = "You are in!"
                 redirect_to "/companies" 
             else
                 flash["notice"] = "Wrong Credentials"
