@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
         if @user 
         # Step 1a: If yes, check passpowrd.
         # Step 2: Check the password to see if it matches
+            if params["email"] == @user["password"]
         # Step 2a: If yes, go to comapny page.
+                redirect_to "/companies" 
+            else
+                redirect_to "/sessions/new" 
         # Step 2b: If no, go back to login page
         else 
         # Step 1b: If no, go back to login page
