@@ -6,6 +6,7 @@
   <li>Phone: <%= @contact["phone_number"] %></li>
 </ul>
 
+<% if @current_user %> 
 <p><a href="/contacts/<%= @contact["id"] %>/edit">Edit</a></p>
 <p><%= button_to "Delete this contact", @contact, :method => "delete" %></p>
 
@@ -34,4 +35,5 @@
     <%= form.text_area "note" %>
   </p>
   <%= form.submit %>
+<% end %>
 <% end %>
