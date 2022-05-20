@@ -1,0 +1,10 @@
+<h1><%= @current_user["first_name"] %> TO DO LIST</h1>
+
+<ul>
+  <% for task in @tasks %>
+    <li>
+      <%= task["description"] %>
+    </li>
+  <% end %>
+</ul>
+

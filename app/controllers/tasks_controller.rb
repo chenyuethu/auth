@@ -14,8 +14,14 @@ class TasksController < ApplicationController
       flash["notice"] = "You need to log in."
       redirect_to "/login"
     end
-
   end
+
+  def show
+    @user = User.find_by({ "id" => params["id"] })
+    @tasks = Task.where({ "user_id" => @user["id"] })
+  end
+
+
 
   def destroy
     @task = Task.find_by({ "id" => params["id"] })
