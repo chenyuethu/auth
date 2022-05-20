@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
         else 
         flash["notice"] = "Wrong Credentials"
         redirect_to "/sessions/new" 
-
         end
     end
 end
