@@ -5,10 +5,16 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new
-    @task["description"] = params["task"]["description"]
-    @task.save
-    redirect_to "/tasks"
+    if @current_user
+      @task = Task.new
+      @task["description"] = params["task"]["description"]
+      @task.save
+      redirect_to "/tasks"
+    else
+      flash["notice"] = "You need to log in."
+      redirect_to "/login"
+    end
+
   end
 
   def destroy
